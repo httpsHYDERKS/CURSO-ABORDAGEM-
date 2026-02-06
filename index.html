@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA RP FIVEM | CURSO ABORDAGEM</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ccc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* CURSOR EM CÍRCULO */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .main-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #161616;
+            border: 1px solid #2a2a2a;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
+        
+        .yt-link {
+            background: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .yt-link:hover { background: #b30000; transform: scale(1.1); }
+
+        nav a { color: #666; text-decoration: none; margin-left: 20px; font-size: 0.8rem; text-transform: uppercase; }
+
+        .intro-grid { 
+            display: flex; 
+            gap: 40px; 
+            margin-bottom: 50px; 
+            flex-wrap: wrap; 
+            align-items: flex-start; 
+        }
+
+        .profile-img {
+            min-width: 320px;
+            height: 420px;
+            background-color: #222;
+            background-image: url('https://raw.githubusercontent.com/ttpshyderks/ttpshyderks.github.io/main/Captura%20de%20tela%202026-02-05%20205441.png'); 
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #333;
+        }
+
+        .intro-text { flex: 1; min-width: 300px; }
+
+        /* EFEITO GLITCH GTA RP FIVEM */
+        .glitch {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .glitch::before, .glitch::after {
+            content: "GTA RP FIVEM";
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8;
+        }
+
+        .glitch::before {
+            left: 3px;
+            text-shadow: -3px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -3px;
+            text-shadow: -3px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 20px, 0); transform: skew(0.5deg); }
+            100% { clip: rect(40px, 9999px, 50px, 0); transform: skew(-0.5deg); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(50px, 9999px, 60px, 0); transform: skew(-0.5deg); }
+            100% { clip: rect(90px, 9999px, 100px, 0); transform: skew(0.5deg); }
+        }
+
+        .section-title {
+            font-size: 0.9rem; color: #fff; text-transform: uppercase; letter-spacing: 2px;
+            margin: 40px 0 20px 0; display: flex; align-items: center; border-top: 1px solid #333; padding-top: 20px;
+        }
+        .section-title span { color: #555; margin-right: 15px; font-weight: bold; }
+
+        .viatura-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 15px; }
+        .viatura-item { background: #1a1a1a; padding: 15px; border-radius: 4px; border-left: 4px solid #333; }
+        .viatura-item b { color: #fff; display: block; margin-bottom: 5px; font-size: 1rem;}
+
+        .abordagem-box { background: #1a1a1a; padding: 20px; border: 1px solid #333; margin-bottom: 15px; border-radius: 4px; }
+        .abordagem-box h4 { color: #fff; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; border-left: 3px solid #ff0000; padding-left: 10px; }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: #555;
+            position: relative;
+        }
+
+        .footer-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #888;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+
+    <div class="main-card">
+        <header>
+            <div class="logo-area">
+                <a href="#" class="logo">▲ GTA RP FIVEM</a>
+                <a href="https://www.youtube.com/@ArcanjoPeralta" target="_blank" class="yt-link">MEU CANAL</a>
+            </div>
+            <nav><a href="#">Sobre</a><a href="#">Patentes</a><a href="#">Regras</a><a href="#">Contato</a></nav>
+        </header>
+
+        <section class="intro-grid">
+            <div class="profile-img"></div>
+            <div class="intro-text">
+                <div class="glitch">GTA RP FIVEM</div>
+                <h3 style="color:#fff; text-transform:uppercase; margin-bottom:15px; border-bottom: 1px solid #333; padding-bottom: 5px;">Curso Abordagem</h3>
+                <p>Aqui você aprenderá o conceito básico de abordagem! Este curso é de extrema importância para subir de cargo e poder assumir o <b>P1</b> de uma viatura.</p>
+                <p style="margin-top:10px;"><i>Obs: Cursos de Speed, Graer e GTM são módulos separados.</i></p>
+                <p style="margin-top:10px; color: #ff4d4d;"><b>É obrigatório seguir as regras da cidade! Leia as regras para a aprovação do curso.</b></p>
+            </div>
+        </section>
+
+        <h2 class="section-title"><span>01</span> Funções na Viatura</h2>
+        <div class="viatura-grid">
+            <div class="viatura-item">
+                <b>P1 – Motorista/Rodinha</b>
+                Nas abordagens faz a segurança do P2. Após a situação contida, realiza o perímetro e verifica se há suspeitos ou reforços inimigos nas proximidades.
+            </div>
+            <div class="viatura-item">
+                <b>P2 – Co Piloto/Chefe de Barca</b>
+                Responsável pelo GPS e comunicações no COPOM. Na abordagem, é quem faz o contato direto: algema, revista, checa documentos e porta-malas. Depende 100% da segurança do P1.
+            </div>
+            <div class="viatura-item">
+                <b>P3 – Reforço</b>
+                Auxilia no COPOM e GPS. Nas abordagens, ajuda o P1 a proteger o perímetro e o P2. Em guarnições de 2 oficiais, esta vaga é usada para conduzir meliantes.
+            </div>
+            <div class="viatura-item">
+                <b>P4 – Meliante</b>
+                Vaga principal para a condução segura de meliantes até a delegacia.
+            </div>
+        </div>
+
+        <h2 class="section-title"><span>02</span> Códigos de Viatura</h2>
+        <div class="viatura-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="viatura-item"><b>Código 1</b> <br> Sem giroflex e sem sirene.</div>
+            <div class="viatura-item"><b>Código 2</b> <br> Somente giroflex ligado.</div>
+            <div class="viatura-item"><b>Código 3</b> <br> Giroflex e sirene ligados.</div>
+        </div>
+
+        <h2 class="section-title"><span>03</span> Tipos de Abordagem</h2>
+        
+        <div class="abordagem-box">
+            <h4>1. Abordagem de Rotina</h4>
+            <p>Abordagem educada sem suspeita prévia. Peça o RG. Reviste apenas se houver reação anormal. <b>Importante:</b> O uso de máscara e coldre torna a revista <u>obrigatória</u>.</p>
+        </div>
+
+        <div class="abordagem-box">
+            <h4>2. Abordagem de Suspeita</h4>
+            <p>Cidadão com ações suspeitas (fuga visual, mudança brusca de caminho). Mantenha a educação. O P1 deve fazer a segurança mirando, mas só algeme se encontrar itens ilegais.</p>
+        </div>
+
+        <div class="abordagem-box">
+            <h4>3. Abordagem de Denúncia</h4>
+            <p>Seja mais firme e cauteloso. Proteja seu parceiro, algeme o suspeito antes de qualquer averiguação e proceda com rapidez para evitar incursões de outros criminosos.</p>
+        </div>
+
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">* Informe sempre ao COPOM antes de iniciar o patrulhamento. Normas de posição (P1, P2...) são obrigatórias.</p>
+
+        <footer>
+            <div>© 2026 GTA RP FIVEM</div>
+            <div class="footer-center">ARCANJO PERALTA</div>
+            <div>TREINAMENTO DE CAMPO</div>
+        </footer>
+    </div>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mousedown', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1.5)'; });
+        document.addEventListener('mouseup', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; });
+    </script>
+
+</body>
+</html>
